@@ -14,7 +14,7 @@ from tqdm import tqdm
 class MmapReader:
     def __init__(self,mmappath):
         info_name = mmappath.replace('.dat','_info.pkl')
-        info = pickle.load(open(info_name),'rb')
+        info = pickle.load(open(info_name,'rb'))
         shp = info['shape']
         self.image_ptr = np.memmap(mmappath, dtype='uint8',mode='r',shape=shp)
 
