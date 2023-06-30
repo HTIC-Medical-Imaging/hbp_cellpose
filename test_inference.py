@@ -12,8 +12,9 @@ from datetime import datetime
 from tqdm import tqdm
 
 class MmapReader:
-    def __init__(self,mmappath):
-        info_name = mmappath.replace('.dat','_info.pkl')
+    def __init__(self,jp2path):
+        info_name = jp2path.replace('.jp2','_info.pkl')
+        mmappath = jp2path.replace('.jp2','.dat')
         info = pickle.load(open(info_name,'rb'))
         shp = info['shape']
         self.image_ptr = np.memmap(mmappath, dtype='uint8',mode='r',shape=shp)
